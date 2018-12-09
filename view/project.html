@@ -55,7 +55,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-xs-12">
                                         <div class="group">      
-                                            <select name="user" ng-model="selectedUserOption" ng-dropdown required ng-change="addUser()" ng-options="user.type for user in userOptions">
+                                            <select name="user" ng-model="selectedUserOption" ng-dropdown required ng-change="addUser()" ng-options="user.firstname+' '+user.lastname for user in userOptions">
                                             </select>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
@@ -110,7 +110,7 @@
                             <tbody>
                                 <tr ng-repeat="user in projectUsers track by $index">
                                     <td>
-                                        {{user.type}}
+                                        {{user.firstname}} {{user.lastname}}
                                     </td>
                                     <td class="text-center">
                                         <i class="fa fa-trash" ng-click="removeUser(this)"></i>

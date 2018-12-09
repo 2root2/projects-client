@@ -6,20 +6,25 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 	$scope.projectUsers = [];
 
 	$scope.formOptions = [
-		{ type: 'Select',value: 0 },
+		{ name: 'Select',value: 0 },
 		{ type: 'Form I',value: 1 },
 		{ type: 'Application Form',value: 2 },
 		{ type: 'Form XI',value: 3 }
 	];
 	$scope.selectedFormOption = $scope.formOptions[0];
 
-	$scope.userOptions = [
-		{ type: 'Select', value: 0 },
-		{ type: 'Virat Kohli',value: 1 },
-		{ type: 'Suresh Raina',value: 2 },
-		{ type: 'Ajinkya Rahane',value: 3 }
-	];
-	$scope.selectedUserOption = $scope.userOptions[0];
+	$http.get($scope.apiUrl+"users/").
+	then(function(data){
+	  $scope.userOptions = data.data;
+	  $scope.selectedUserOption = $scope.userOptions[0];
+	});
+	// $scope.userOptions = [
+	// 	{ type: 'Select', value: 0 },
+	// 	{ type: 'Virat Kohli',value: 1 },
+	// 	{ type: 'Suresh Raina',value: 2 },
+	// 	{ type: 'Ajinkya Rahane',value: 3 }
+	// ];
+	// $scope.selectedUserOption = $scope.userOptions[0];
 
 	$scope.shapeOptions = [
 		{ type: 'Select', value: 0 },
@@ -48,7 +53,7 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 	}
 	
 	function filter_select_user(aUser) {
-        return aUser.value == $scope.selectedUserOption.value;
+        return aUser.id == $scope.selectedUserOption.id;
     }
 
 	$scope.addUser = function() {
@@ -66,6 +71,7 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 		var requestData = {};
 		requestData.project = $scope.projectTitle;
 		requestData.description = $scope.projectDesc;
+		requestData.forms = $scope.projectForms;
 		data = JSON.stringify(requestData);
 		console.log(data);
 		$http.post($scope.apiUrl+"projects/", data, {
