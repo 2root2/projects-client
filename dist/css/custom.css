@@ -1,0 +1,276 @@
+/* general labels and styles */
+
+
+.label-low{
+	background-color: #b1b1b1;
+}
+
+.label-pink{
+	background-color: #FF1493;
+}
+.labelf{
+	font-weight: bold;
+}
+
+.fa-arrow-circle-left{
+	font-size: 50px;
+	color: #4CAF50;
+	padding-left: 20px;
+}
+
+.fa-caret-left{
+	font-size: 50px;
+}
+
+.depttitle{
+	padding-bottom: 35px;
+	font-size: 22px;
+	font-weight: bolder; 
+}
+
+.tdd{
+	text-align: center;
+	width: 10%;
+	
+}
+
+.tdfont{
+	font-size: 20px;
+}
+
+/*#f3ffff
+#d3ffcd
+#84b57d
+#f7eaea*/
+.controlflow{
+	overflow-x:auto;
+}
+
+.hide-control{
+	height: 0px;
+	visibility: hidden;
+}
+
+/* tasklist box, small box */
+.box-body h4{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.box-body{
+	font-size: 16px;
+}
+
+.box-body p{
+	padding-left: 5px;
+	font-size: 16px;
+}
+
+.taskid{
+	font-weight: bold;
+}
+
+.task{
+	display: block !important;
+	text-align: justify;
+	font-size: 17px !important;
+}
+
+label{
+	font-weight: normal;
+}
+
+.small-box>.inner{
+	padding:5px;
+}
+
+.small-box h4{
+	height: 40px;
+}
+
+
+
+/* tasklist table */
+.table-red{
+	margin-bottom: 0px;
+	border:0px;
+}
+
+.table>tbody>tr>td{
+	/*border:0px;	commented for dashboard*/
+}
+
+
+
+/* loading */
+.loading{
+	background-color: white;
+	padding: 25px;
+	border:2px solid #4CAF50;
+	z-index:5;position: fixed;top: 40%;
+	left:0;
+	right: 0;
+}
+
+#progress {
+    z-index: 200;
+    background-color: white;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    top: 20%;
+
+}
+
+.pointclass{
+	cursor: pointer;
+}
+
+
+/*CSS Added by Jonathan*/
+.status{
+	display: inline-block;
+	padding: 0em;
+}
+
+.remarks{
+		font-size: 16px;;
+	}
+.latstRemDate p{
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.scroll-div{
+	/*position: absolute;*/
+	/*margin-top: 15%;*/
+	overflow: auto;
+	max-height:58%;
+	padding-bottom: 2%;
+	 
+}
+
+.fixed-div{
+
+	z-index: 999;
+	 width: 97.8%;
+	     /*box-shadow: 0px 5px 20px #888888;*/
+}
+
+.scroll-bar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb
+{
+	background-color: #4caf50;
+	border-radius: 10px;
+	background-image: -webkit-linear-gradient(0deg,
+	                                          rgba(255, 255, 255, 0.5) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, 0.5) 50%,
+											  rgba(255, 255, 255, 0.5) 75%,
+											  transparent 75%,
+											  transparent)
+}
+
+
+.cust-link  li a:link {
+    color: #eefffc;
+    text-decoration:none;
+}
+
+/* visited link */
+.cust-link li a:visited {
+    color: #eefffc;
+}
+
+/* mouse over link */
+.cust-link  li a:hover {
+    color: #eefffc;
+}
+
+/* selected link */
+.cust-link li a:active {
+    color: #5bc6b3;;
+}
+/*
+@media all and (max-width: 1024px) {
+.scroll-div {
+   
+   max-height:80%
+    
+}
+
+@media screen and (max-width: 768px) , screen and (max-height:1024px) {
+.scroll-div {
+   
+    margin-top: 30%;
+    max-height:60%
+    
+}
+}*/
+
+@media all and (max-width: 414px) {
+	.remarks{
+		font-size: 10px;font-weight: 600;
+	}
+
+	.tdfont{
+		font-size: 10px;
+	}
+	
+	.toUser {
+		width: 100%!important;
+	}
+
+	.latstRemDate{
+		width:70% !important;
+	}
+
+	.latstRemDate p{
+	font-size: 12px;
+	font-weight: 400; 
+	position:absolute; 
+	margin-top:-28px;
+	margin-left:50px;
+	}
+
+	.expand button{
+		position:absolute;
+		margin-top:-47px;
+		
+	}
+	.status label {
+		    font-size: 10px;
+	}
+	.status span{
+		font-size: 14px;
+	}
+	
+	.priority{
+	position: absolute;
+    margin-left: 57.9%;
+    margin-top: 27px;
+	}
+	.priority label{
+		font-size: 10px;
+	}
+	.scroll-div {
+   
+    margin-top: 10%;
+    max-height:45%
+    
+}
+}

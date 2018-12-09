@@ -1,0 +1,86 @@
+/* Float four columns side by side */
+/* .column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  overflow-x: scroll;
+} */
+
+.proj-row {
+    /* height:100%; */
+    padding:0;
+    margin:0;
+    white-space:nowrap;
+    font-size:0;
+    overflow-x: scroll;
+    margin-bottom: 50px;
+    padding-top: 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+/* .row {margin: 0 -5px;} */
+
+/* Clear floats after the columns */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+} */
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  /* padding: 16px; */
+  /* text-align: center; */
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  height: 150px;
+}
+
+.column {
+    min-width: 300px;
+    max-width:500px;
+    /* min-height: 250px; */
+    display:inline-block;
+    *zoom:1;/*IE*/
+    font-size:14px;
+    white-space:normal;
+    padding:0 2em;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    background-color:#337ab7;
+    /* width: 100%; */
+    color: white;
+    /* padding: 10px; */
+    padding: 10px 20px;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+.card-body {
+    padding: 10px 20px;
+}
+
+.card-forms-count, .card-total-count {
+    font-size: 25px;
+    /* font-weight: bold; */
+}
+
+.proj-form-tbl th {
+    font-weight: bold;
+}
+
+.proj-form-action {
+    margin: 10px 20px;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}

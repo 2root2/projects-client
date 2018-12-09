@@ -1,0 +1,93 @@
+<div class="content-wrapper">
+    <div class="row">
+        <div style ="padding-left: 20px; padding-top:10px" class="pull-left">
+         <span style="font-size: 20px;font-weight: bolder; font-family: 'Montserrat', sans-serif; word-spacing: 4px;" > PROJECTS</span>
+        </div>
+        <div style="padding-right: 20px; margin-top:10px" class="pull-right">
+          <i class="ion-refresh"> Refresh</i> &nbsp;&nbsp;&nbsp;
+          <i class="ion-funnel"> Filter</i> &nbsp;&nbsp;&nbsp;
+          <input type="text" ng-model="search" placeholder="search project here..">
+
+        <input type="button" class="btn btn-primary" Name="Add New Project" value="Add New Project">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div></div>
+    <div class="proj-row">
+        <div  ng-repeat="proj in data | filter:search" class="column">
+            <div class="card" ng-click="showProjectDetails(proj.id)">
+                <div class="card-title">
+                        {{ proj.project }}
+                </div>
+                <div class="card-body">
+                    <span class="card-forms-count">{{ proj.formsubmitted }}</span>
+                    Number of Forms
+                    <br>
+                    <span class="card-total-count">{{ proj.total }}</span>
+                    <span >
+                        <img ng-repeat="aProfile in proj.profile" width="25px" height="25px" class="img-circle img" src="{{aProfile.imageURL}}"/>
+                    </span>
+                    <span class="label label-primary img-circle">+{{ proj.count}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" ng-if="selecetedProject != 0">
+        <!-- <div class="card card-body" ng-repeat="aProj in data" >
+                    <strong>{{ aProj.project }} </strong
+                    <br>
+                    Last Updated on : <span>{{ aProj.lastupdated }}</span>
+                    <br>
+                    <em> On : {{ aProj.createdon }} </em>
+                    <div class="">
+                        {{ aProj.description }}
+                    </div>
+        </div> -->
+
+        <div class="form-wrapper">
+                <strong>{{ selected.project }} </strong>
+                <br>
+                Last Updated on : <span>{{ selected.lastupdated }}</span>
+                <br>
+                <em> On : {{ selected.createdon }} </em>
+                <div class="">
+                    {{ selected.description }}
+                </div>
+
+                <div class="row">
+                        <div class="col-lg-12 col-xs-12">
+                            <input type="checkbox" class="proj-form-action"> Select All</input>
+                            <i class="ion-refresh proj-form-action"> Refresh</i>
+                            <i class="fa fa-filter proj-form-action"> Filter</i>
+                        </div>
+                </div>
+                <table class="table proj-form-tbl">
+                        <thead>
+                            <tr>
+                                <th></th>
+                            <th>
+                                Forms
+                            </th>
+                            <th>
+                                Shape
+                            </th>
+                            <th>
+                                Reminder
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="aForm in Forms">
+                                <td>
+                                    <input type="checkbox" disabled>
+                                </td>
+                                <td>{{ aForm.name }}</td>
+                                <td>{{ aForm.shape }}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+        <div class="container-fluid card card-body" style="margin-top:50px; display:none">
+    </div>
+</div>
