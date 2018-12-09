@@ -1,21 +1,27 @@
-<div class="content-wrapper">
+<nav class="navbar navbar-static-top box-shadow" role="navigation" style="padding-bottom: 20px; margin-bottom: 0px;">
+    <a style="color: #333333;"  href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
     <div class="row">
-        <div style ="padding-left: 20px; padding-top:10px" class="pull-left">
-         <span style="font-size: 20px;font-weight: bolder; font-family: 'Montserrat', sans-serif; word-spacing: 4px;" > PROJECTS</span>
+        <div style ="padding-left: 20px; padding-top:10px; margin-left:230px" class="pull-left">
+            <span style="font-size: 20px;font-weight: bolder; font-family: 'Montserrat', sans-serif; word-spacing: 4px;" > PROJECTS</span>
         </div>
         <div style="padding-right: 20px; margin-top:10px" class="pull-right">
-          <i class="ion-refresh"> Refresh</i> &nbsp;&nbsp;&nbsp;
-          <i class="ion-funnel"> Filter</i> &nbsp;&nbsp;&nbsp;
-          <input type="text" ng-model="search" placeholder="search project here..">
+            <i class="ion-refresh padding-aside"> Refresh</i>
+            <i class="ion-funnel padding-aside"> Filter</i>
+            <input type="text" ng-model="search" class="search-box padding-aside" placeholder="search project here..">
 
-        <input type="button" class="btn btn-primary" Name="Add New Project" value="Add New Project">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        </div></div>
+        <a class="btn btn-primary btn-proj" href="#/create-project">CREATE NEW PROJECT</a>
+        </div>
+    </div>
+</nav>
+<div class="content-wrapper">
     <div class="proj-row">
         <div  ng-repeat="proj in data | filter:search" class="column">
-            <div class="card" ng-click="showProjectDetails(proj.id)">
+            <div class="card proj-card" ng-click="showProjectDetails(proj.id)">
                 <div class="card-title">
                         {{ proj.project }}
+                        <i class="fa fa-ellipsis-v pull-right"></i>
                 </div>
                 <div class="card-body">
                     <span class="card-forms-count">{{ proj.formsubmitted }}</span>
@@ -24,6 +30,9 @@
                     <span class="card-total-count">{{ proj.total }}</span>
                     <span >
                         <!-- <img ng-repeat="aProfile in proj.profile" width="25px" height="25px" class="img-circle img" src="{{aProfile.imageURL}}"/> -->
+                        <!-- <span ng-repeat="aUser in Users">
+                            <img width="25px" height="25px" class="img-circle img" src="{{user.imageURL}}"/>
+                        </span> -->
                     </span>
                     <span class="label label-primary img-circle">+{{ proj.count}}</span>
                 </div>
@@ -44,49 +53,104 @@
         </div> -->
 
         <div class="form-wrapper">
-                <strong>{{ selected.project }} </strong>
+            <div class="project-details">
+                <span style="font-size:30">
+                    <strong>{{ selected.project }} </strong>
+                </span> <i class="fa fa-pencil fa-2x" style="color:#6692b9"></i>
+                <span class="pull-right">
+                    
+                    <button class="btn btn-proj"><i class="fa fa-plus"></i> ADD TO GROUP</button>
+                </span>
                 <br>
-                Last Updated on : <span>{{ selected.lastupdated }}</span>
+                <strong>Last Updated : <span>{{ selected.lastupdated | date:dd-mm}}</span></strong> 
                 <br>
-                <em> On : {{ selected.createdon }} </em>
-                <div class="">
+                <br>
+                <em>Created On : {{ selected.createdon | date:DD-MM-YYYY}} </em>
+                <div class="project-desc">
                     {{ selected.description }}
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button class="btn btn-proj">ADD FORMS TO PROJECT <i class="fa fa-caret-down"></i></button>
+                        <span class="pull-right"><i class="fa fa-search" style="color:#828282"></i> <input type="text" class="search-box" ng-model="formSearch" placeholder="Search forms here.."></span>
+                    </div>
                 </div>
 
                 <div class="row">
-                        <div class="col-lg-12 col-xs-12">
-                            <input type="checkbox" class="proj-form-action"> Select All</input>
-                            <i class="ion-refresh proj-form-action"> Refresh</i>
-                            <i class="fa fa-filter proj-form-action"> Filter</i>
-                        </div>
+                    <div class="col-lg-12 col-xs-12">
+                        <input type="checkbox" ng-click="selectAllForms = true" class="proj-form-action"> Select All</input>
+                        <i class="ion-refresh proj-form-action"> Refresh</i>
+                        <i class="fa fa-filter proj-form-action"> Filter</i>
+                    </div>
                 </div>
-                <table class="table proj-form-tbl">
-                        <thead>
-                            <tr>
-                                <th></th>
-                            <th>
-                                Forms
-                            </th>
-                            <th>
-                                Shape
-                            </th>
-                            <th>
-                                Reminder
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="aForm in Forms">
-                                <td>
-                                    <input type="checkbox" disabled>
-                                </td>
-                                <td>{{ aForm.name }}</td>
-                                <td>{{ aForm.shape }}</td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <ul class="nav nav-tabs">
+                        <li ng-click="activeTab = 1" class="{{activeTab == 1 ? 'tab-active' : ''}} custom-tab">Forms</li>
+                        <li ng-click="activeTab = 2" class="{{activeTab == 2 ? 'tab-active' : ''}} custom-tab">Users</li>
+                      </ul>
+                      
+                      <div class="tab-content">
+                        <div class="" ng-if="activeTab == 1">
+                          <table class="table proj-form-tbl">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                    <th>
+                                        Forms
+                                    </th>
+                                    <th>
+                                        Shape
+                                    </th>
+                                    <th>
+                                        Reminder
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="aForm in Forms | filter:formSearch ">
+                                        <td>
+                                            <input type="checkbox" ckecked="selectAllForms" >
+                                        </td>
+                                        <td>{{ aForm.name }}</td>
+                                        <td>{{ aForm.shape }}</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-if="activeTab == 2">
+                            <table class="table proj-form-tbl">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Age
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="aUser in Users">
+                                            <td>
+                                                <input type="checkbox" disabled>
+                                            </td>
+                                            <td>{{ aUser.firstname }} {{ aUser.lastname }}</td>
+                                            <td>{{ aUser.age }}</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                      </div>
+                
         </div>
+    </div>
+    <div class="container-fluid no-projects"  ng-if="selecetedProject == 0">
+        Select Project to view details..
     </div>
         <div class="container-fluid card card-body" style="margin-top:50px; display:none">
     </div>

@@ -1,3 +1,13 @@
+<nav class="navbar navbar-static-top box-shadow" role="navigation" style="padding-bottom: 20px; margin-bottom: 0px;">
+        <a style="color: #333333;"  href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="row">
+            <div style ="padding-left: 20px; padding-top:10px; margin-left:230px;" class="pull-left">
+                <span style="font-size: 20px;font-weight: bolder; font-family: 'Montserrat', sans-serif; word-spacing: 4px;" >CREATE PROJECT</span>
+            </div>
+        </div>
+    </nav>
 <div class="content-wrapper">
       <div class="container">
         <div class="form-wrapper">
@@ -76,52 +86,63 @@
                                     </div>
                                 </div>
                     </div>
-                    <div class="col-lg-6">
-                        <table class="table table-resonsive ">
-                            <thead class="text-center">
-                                <th>
-                                    Type
-                                </th>
-                                <th class="text-center">
-                                    Action
-                                </th>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="form in projectForms track by $index">
-                                    <td>
-                                        {{form.name}}
-                                    </td>
-                                    <td class="text-center">
-                                        <i class="fa fa-trash" ng-click="removeForm(this)"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="table table-resonsive ">
-                            <thead class="text-center">
-                                <th>
-                                    Name
-                                </th>
-                                <th class="text-center">
-                                    Action
-                                </th>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="user in projectUsers track by $index">
-                                    <td>
-                                        {{user.firstname}} {{user.lastname}}
-                                    </td>
-                                    <td class="text-center">
-                                        <i class="fa fa-trash" ng-click="removeUser(this)"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-lg-6" style="background-color: #edf0f4; border-radius: 5px;">
+                            <ul class="nav nav-tabs">
+                                <li ng-click="activeTab = 1" class="{{activeTab == 1 ? 'tab-active' : ''}} custom-tab">Forms</li>
+                                <li ng-click="activeTab = 2" class="{{activeTab == 2 ? 'tab-active' : ''}} custom-tab">Users</li>
+                            </ul>
+                                  
+                            <div class="tab-content">
+                                <div class="" ng-if="activeTab == 1">
+                                    <table class="table table-resonsive ">
+                                        <thead class="text-center">
+                                            <th>
+                                                Type
+                                            </th>
+                                            <th class="text-center">
+                                                Action
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="form in projectForms track by $index">
+                                                <td>
+                                                    {{form.name}}
+                                                </td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-trash" ng-click="removeForm(this)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div ng-if="activeTab == 2">
+                                    <table class="table table-resonsive ">
+                                        <thead class="text-center">
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th class="text-center">
+                                                Action
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="user in projectUsers track by $index">
+                                                <td>
+                                                    {{user.firstname}} {{user.lastname}}
+                                                </td>
+                                                <td class="text-center">
+                                                    <i class="fa fa-trash" ng-click="removeUser(this)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" value="Create Project" name="Create Projcet" ng-click="postProject()">Create Project</button>
+                <button class="btn btn-proj" value="Create Project" name="Create Projcet" ng-click="postProject()">CREATE PROJECT</button>
             </form>          
         </div>
     </div>

@@ -13,7 +13,7 @@
     white-space:nowrap;
     font-size:0;
     overflow-x: scroll;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     padding-top: 10px;
 }
 
@@ -35,6 +35,10 @@
   background-color: #f1f1f1;
   border-radius: 5px;
   height: 150px;
+}
+
+.proj-card {
+    cursor: pointer;
 }
 
 .column {
@@ -74,6 +78,59 @@
 
 .proj-form-action {
     margin: 10px 20px;
+}
+
+.no-projects {
+    font-size: 30;
+    color: #0c08085c;
+    height: 200px;
+    text-align: center;
+}
+
+.project-details {
+    margin-bottom: 30px;
+}
+
+.project-desc {
+    margin:10px 0px;
+}
+
+.btn-proj {
+    background-color: white;
+    border: 2px solid #417cb1d6;
+    border-radius: 0;
+    color: #417cb1d6;
+}
+
+.box-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.search-box {
+    height: 35px;
+    border: none;
+    padding-left: 2;
+    border-bottom: 1px solid #6692b9;
+}
+
+.search-box:focus {
+    outline: none;
+}
+
+.padding-aside {
+    padding-right:5px;
+    padding-left: 5px; 
+}
+
+.custom-tab {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.tab-active {
+    border-bottom: 2px solid #417cb1;
+    color: #417cb1;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */

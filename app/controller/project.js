@@ -1,9 +1,11 @@
 projmodule.controller("projectController",function($scope,$rootScope,$http,$location,$interval){
 	$scope.projectTitle = "";
 	$scope.projectDesc = "";
+	$scope.activeTab = 1;
 	$scope.apiUrl = "http://localhost:8080/api/v1/"
 	$scope.projectForms = [];
 	$scope.projectUsers = [];
+	$scope.saveSuccess = false;
 
 	//populate forms dropdown
 	$http.get($scope.apiUrl+"forms/").
@@ -85,8 +87,15 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 				headers: { 'Content-Type': 'application/json; charset=UTF-8'}
 			}).then(function(responseData) {
 		//do stuff with response
+		alert("Project is Created!!");
+		// $scope.saveSuccess = true;
 		$scope.projectTitle = "";
 		$scope.projectDesc = "";
+		$scope.projectForms = [];
+		$scope.projectUsers = [];
+		$scope.projectForms.push(formToAdd[0]);
+		$scope.projectUsers.push(userToAdd[0]);
+		$scope.selectedshapeOption = $scope.shapeOptions[0];
     	});
 	}
 });
