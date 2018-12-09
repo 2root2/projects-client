@@ -1,21 +1,126 @@
 <div class="content-wrapper">
       <div class="container">
         <div class="form-wrapper">
-            <form id="add-project">        
-                <div class="group">      
-                <input type="text" ng-model="projectTitle" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Name</label>
+            <form id="add-project">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="group">      
+                        <input type="text" ng-model="projectTitle" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Name</label>
+                        </div>
+                    </div>
+                </div>  
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="group">      
+                        <input type="text" ng-model="projectDesc" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Description</label>(2000 characters)
+                        </div>    
+                    </div>
+                </div>  
+
+                <div class="row">
+                    <div class="col-lg-6">
+                            <div class="row">
+                                    <div class="col-lg-6 col-xs-12">
+                                        <div class="group">      
+                                        <!-- <select required>
+                                            <option value="1">Form 1</option>
+                                        </select> -->
+                                        <select name="form" ng-model="selectedFormOption" ng-dropdown required ng-change="addForm()" ng-options="form.type for form in formOptions">
+                                        </select>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Select Form(s)</label>
+                                        </div>    
+                                    </div>
+                
+                                    <div class="col-lg-6 col-xs-12">
+                                        <div class="group">      
+                                        <select required>
+                                            <option value="1">Weekly</option>
+                                        </select>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Reminder</label>
+                                        </div>     
+                                    </div>
+                                </div>  
+                                
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-12">
+                                        <div class="group">      
+                                            <select name="user" ng-model="selectedUserOption" ng-dropdown required ng-change="addUser()" ng-options="user.type for user in userOptions">
+                                            </select>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Add user(s)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-12">
+                                        <div class="group">      
+                                            <select name="shape" ng-model="selectedshapeOption" ng-dropdown required ng-options="shape.type for shape in shapeOptions">
+                                            </select>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Shape</label>
+                                        </div>   
+                                    </div>
+                                </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <table class="table table-resonsive ">
+                            <thead class="text-center">
+                                <th>
+                                    Type
+                                </th>
+                                <th class="text-center">
+                                    Action
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="form in projectForms track by $index">
+                                    <td>
+                                        {{form.type}}
+                                    </td>
+                                    <td class="text-center">
+                                        <i class="fa fa-trash" ng-click="removeForm(this)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-resonsive ">
+                            <thead class="text-center">
+                                <th>
+                                    Name
+                                </th>
+                                <th class="text-center">
+                                    Action
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="user in projectUsers track by $index">
+                                    <td>
+                                        {{user.type}}
+                                    </td>
+                                    <td class="text-center">
+                                        <i class="fa fa-trash" ng-click="removeUser(this)"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 
-                <div class="group">      
-                <input type="text" ng-model="projectDesc" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Description</label>(2000 characters)
-                </div>    
-
                 <button class="btn btn-primary" value="Create Project" name="Create Projcet" ng-click="postProject()">Create Project</button>
             </form>          
         </div>
