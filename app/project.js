@@ -13,9 +13,9 @@ projmodule.config(function($routeProvider){
 		});
 });
 
-// projmodule.config(['$locationProvider', function($locationProvider) {
-//   $locationProvider.hashPrefix('');
-// }]);
+projmodule.config(['$locationProvider', function($locationProvider) {
+  $locationProvider.hashPrefix('');
+}]);
 
 
 

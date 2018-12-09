@@ -7,7 +7,7 @@ projmodule.controller("dashController",function($scope,$rootScope,$http,$locatio
 
     $http.get($scope.apiUrl+"projects/").
           then(function(data){
-            console.log(data);
+            $scope.data = data.data
           });
 
     function filter_project(aProject) {
@@ -20,7 +20,7 @@ projmodule.controller("dashController",function($scope,$rootScope,$http,$locatio
         $scope.selected = filteredProjects[0];
     }
             
-    $scope.data =  [
+    $scope.data_test =  [
                 {
         "id": 1,
         "project": "Project School", 
