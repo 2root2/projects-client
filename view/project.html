@@ -32,7 +32,7 @@
                                         <!-- <select required>
                                             <option value="1">Form 1</option>
                                         </select> -->
-                                        <select name="form" ng-model="selectedFormOption" ng-dropdown required ng-change="addForm()" ng-options="form.type for form in formOptions">
+                                        <select name="form" ng-model="selectedFormOption" ng-dropdown required ng-change="addForm()" ng-options="form.name for form in formOptions">
                                         </select>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
@@ -89,7 +89,7 @@
                             <tbody>
                                 <tr ng-repeat="form in projectForms track by $index">
                                     <td>
-                                        {{form.type}}
+                                        {{form.name}}
                                     </td>
                                     <td class="text-center">
                                         <i class="fa fa-trash" ng-click="removeForm(this)"></i>

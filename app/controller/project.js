@@ -5,13 +5,19 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 	$scope.projectForms = [];
 	$scope.projectUsers = [];
 
-	$scope.formOptions = [
-		{ name: 'Select',value: 0 },
-		{ type: 'Form I',value: 1 },
-		{ type: 'Application Form',value: 2 },
-		{ type: 'Form XI',value: 3 }
-	];
-	$scope.selectedFormOption = $scope.formOptions[0];
+	//populate forms dropdown
+	$http.get($scope.apiUrl+"forms/").
+	then(function(data){
+	  $scope.formOptions = data.data;
+	  $scope.selectedFormOption = $scope.formOptions[0];
+	});
+	// $scope.formOptions = [
+	// 	{ name: 'Select',value: 0 },
+	// 	{ type: 'Form I',value: 1 },
+	// 	{ type: 'Application Form',value: 2 },
+	// 	{ type: 'Form XI',value: 3 }
+	// ];
+	//$scope.selectedFormOption = $scope.formOptions[0];
 
 	$http.get($scope.apiUrl+"users/").
 	then(function(data){
@@ -45,7 +51,7 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 	}
 
 	function filter_select_form(aForm) {
-        return aForm.value == $scope.selectedFormOption.value;
+        return aForm.id == $scope.selectedFormOption.id;
     }
 
     $scope.showProjectDetails = function(id) {      
@@ -71,7 +77,8 @@ projmodule.controller("projectController",function($scope,$rootScope,$http,$loca
 		var requestData = {};
 		requestData.project = $scope.projectTitle;
 		requestData.description = $scope.projectDesc;
-		requestData.forms = $scope.projectForms;
+		requestData.profile = $scope.projectUsers;
+		// requestData.forms = $scope.projectForms;
 		data = JSON.stringify(requestData);
 		console.log(data);
 		$http.post($scope.apiUrl+"projects/", data, {
